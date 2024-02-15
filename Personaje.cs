@@ -10,17 +10,11 @@ namespace RefactorizacionCreacionPersonaje
     {
         private readonly Profesion _profesion;
         private readonly Raza _raza;
-        private readonly Random _generador;
-        
-
-
         private Dictionary<Caracteristica, int> _caracteristicas;
 
         public Personaje(Raza razaElegida, Profesion profesionElegida) {
             _raza = razaElegida;
-            _profesion = profesionElegida;
-            _generador = new Random();
-           
+            _profesion = profesionElegida;    
             GenerarCaracteristicas();
             AplicarModificadoresPorProfesion();
             AplicarModificadoresPorRaza();
@@ -30,8 +24,9 @@ namespace RefactorizacionCreacionPersonaje
 
         private void GenerarCaracteristicas() {
             _caracteristicas = new Dictionary<Caracteristica, int>();
+            Random generador = new Random();
             foreach (Caracteristica caracteristica in Enum.GetValues(typeof(Caracteristica))) {
-                _caracteristicas[caracteristica]= _generador.Next(25, 81);
+                _caracteristicas[caracteristica]= generador.Next(25, 81);
                 Console.WriteLine(caracteristica);
             }
         }
@@ -75,7 +70,7 @@ namespace RefactorizacionCreacionPersonaje
 
 
         private ConsoleColor ElegirColor(int valorCaracteristica) {
-            ConsoleColor color = ConsoleColor.White;
+            ConsoleColor color = ConsoleColor.Gray;
             
             if (valorCaracteristica < 40) {
                 color = ConsoleColor.Red;

@@ -82,12 +82,7 @@ namespace RefactorizacionCreacionPersonaje
             {Caracteristica.Intuicion,"Intuicion" }
         };
         */
-        public static readonly Dictionary<int, ConsoleColor> _colores = new Dictionary<int, ConsoleColor>()
-        {
-            {39, ConsoleColor.Red },
-            {59, ConsoleColor.Yellow },
-            {80, ConsoleColor.Green }
-        };
+        
 
 
 

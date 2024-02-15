@@ -6,21 +6,7 @@ namespace RefactorizacionCreacionPersonaje
     {
         private static Raza? _raza;
         private static Profesion? _profesion;
-        static void Main()
-        {
-            int opcion;
-            do
-            {
-                Console.Clear();
-                opcion = PedirValorAlUsuario("Bienvenido al programa de creación de personajes." +
-                    "\nSelecciona una opción:\n1.Introducir raza.\n2.Introducir profesión." +
-                    "\n3.Crear personaje y mostrar informe.\n4.Salir.");
-                ClasificarPersonaje(opcion);
-            } while (opcion != 4);
-        }
-
-
-        private static int PedirValorAlUsuario(string mensaje)
+        public static int PedirValorAlUsuario(string mensaje)
         {
             int valor;
             bool valorValido;
@@ -38,30 +24,23 @@ namespace RefactorizacionCreacionPersonaje
 
 
 
-        private static void ClasificarPersonaje(int opcion)
+        public static void ClasificarOpciones(int opcion)
         {
-            switch (opcion)
+            if(opcion == 1)
             {
-                case 1:
-                    {
-                        _raza = (Raza)PedirValorAlUsuario("¿De qué raza es el personaje?\n0. Humano\n1. Elfo. \n2. Enano.\n3. Orco.");
-                        break;
-                    }
-                case 2:
-                    {
-                        _profesion = (Profesion)PedirValorAlUsuario("¿De qué profesión es el personaje?\n0. Guerrero\n1. Mago. \n2. Ladrón.\n3. Clérigo.");
-                        break;
-                    }
-                case 3:
-                    {
-                        CrearYMostrarPersonaje();
-                        break;
-                    }
-                case 4:
-                    {
-                        Console.WriteLine("Adiós!!!");
-                        break;
-                    }
+                _raza = (Raza)PedirValorAlUsuario("¿De qué raza es el personaje?\n0. Humano\n1. Elfo. \n2. Enano.\n3. Orco.");
+            }
+            else if (opcion == 2)
+            {
+                _profesion = (Profesion)PedirValorAlUsuario("¿De qué profesión es el personaje?\n0. Guerrero\n1. Mago. \n2. Ladrón.\n3. Clérigo.");
+            }
+            else if (opcion == 3)
+            {
+                CrearYMostrarPersonaje();
+            }
+            else if (opcion == 4)
+            {
+                Console.WriteLine("Adiós!!!");
             }
         }
 
